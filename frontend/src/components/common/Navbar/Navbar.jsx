@@ -39,21 +39,37 @@ const Navbar = () => {
       <div className="user-actions">
         <div className="profile-points">Points</div>
         {userInfo ? (
-          <img
-            src={
-              userInfo.avatar
-                ? `${BASE_URL}/avatar/${userInfo.avatar}`
-                : `${FRONT_URL}/profile.svg`
-            }
-            alt="profile"
-            className="profile-icon"
-          />
+          <div className="profile-dropdown">
+            <img
+              src={
+                userInfo.avatar
+                  ? `${BASE_URL}/${userInfo.avatar}`
+                  : `${FRONT_URL}/profile.svg`
+              }
+              alt="profile"
+              className="profile-icon"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            />
+            {dropdownOpen && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="dropdown-item logout-btn"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           <div className="auth-buttons">
-            <NavLink to="/signIn" className="signin-btn">
+            <NavLink to="/login" className="signin-btn">
               Sign in
             </NavLink>
-            <Link to="/signUp" className="join-btn">
+            <Link to="/register" className="join-btn">
               Join
             </Link>
           </div>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { indianStates, indianCities } from '../../data/indiaData.js'
+import { indianStates, indianCities } from '..//../../data/indiaData.js'
 import { FaAddressBook } from 'react-icons/fa6'
 import { FaPhoneAlt, FaImage } from 'react-icons/fa'
 

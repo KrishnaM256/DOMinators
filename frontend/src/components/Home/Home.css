@@ -1,0 +1,81 @@
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 0 10px;
+}
+
+.serviceCard {
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.serviceCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.serviceCard p {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: #555;
+}
+
+.statsSection {
+  padding: 0px 20px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+.statsSection .h3 {
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.statsGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 35px 30px;
+  text-align: center;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  width: 350px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.statCard:hover {
+  transform: scale(1.05); /* Smooth zoom-in effect */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15); /* Highlight shadow */
+}
+
+.statCard h4 {
+  font-size: 36px;
+  color: #333333; /* Darker text for emphasis */
+  margin: 10px;
+  font-weight: bold;
+  font-family: 'Playfair Display', serif;
+}
+
+.statCard p {
+  font-size: 16px;
+  color: #555555; /* Subtle grey for description */
+  margin: 0;
+}

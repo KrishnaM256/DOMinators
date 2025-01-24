@@ -5,7 +5,6 @@ import AddressInfo from './AddressInfo.jsx'
 import { GrPrevious, GrNext } from 'react-icons/gr'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { setCredentials } from '../../../redux/features/auth/authSlice.js'
-import Loader from '../../common/Loader/Loader.jsx'
 import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 import { useRegisterMutation } from '../../../redux/api/usersApiSlice.js'
@@ -89,54 +88,59 @@ const Register = () => {
   }
 
   return (
-    <form
-      className="form"
-      onSubmit={handleSubmit}
-      enctype="multipart/form-data"
-    >
-      <div className="formDiv">
-        <div className="formHeading">
-          <h1>{FormTitle[page]}</h1>
-        </div>
-        <div className="formBody">{pageDisplay()}</div>
-        <div className="navigatePage">
-          {page == 0 ? (
-            <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-              <button className="btn subBtn" type="button">
+    <div className="flex justify-center items-center w-[100%]">
+      <form
+        className="form"
+        onSubmit={handleSubmit}
+        enctype="multipart/form-data"
+      >
+        <div className="formDiv">
+          <div className="formHeading">
+            <h1>{FormTitle[page]}</h1>
+          </div>
+          <div className="formBody">{pageDisplay()}</div>
+          <div className="navigatePage">
+            {page == 0 ? (
+              <button
+                className="btn"
+                type="button"
+                onClick={() =>
+                  navigate(redirect ? `/login?redirect=${redirect}` : '/login')
+                }
+              >
                 <GrPrevious />
                 Log in
               </button>
-            </Link>
-          ) : (
-            <button
-              className="btn"
-              disabled={page == 0}
-              type="button"
-              onClick={handlePrev}
-            >
-              <GrPrevious />
-              Prev
-            </button>
-          )}
-          {page == 1 ? (
-            <button className="btn subBtn" type="submit">
-              {isLoading ? <>Signing Up...</> : <>Sign Up</>}
-            </button>
-          ) : (
-            <button
-              className="btn"
-              type="button"
-              disabled={page == 1}
-              onClick={handleNext}
-            >
-              Next
-              <GrNext />
-            </button>
-          )}
+            ) : (
+              <button
+                className="btn"
+                disabled={page == 0}
+                type="button"
+                onClick={handlePrev}
+              >
+                <GrPrevious />
+                Prev
+              </button>
+            )}
+            {page == 1 ? (
+              <button className="btn subBtn" type="submit">
+                {isLoading ? <>Signing Up...</> : <>Sign Up</>}
+              </button>
+            ) : (
+              <button
+                className="btn"
+                type="button"
+                disabled={page == 1}
+                onClick={handleNext}
+              >
+                Next
+                <GrNext />
+              </button>
+            )}
+          </div>
         </div>
-      </div>
-      {isLoading && <Loader />}
-    </form>
+      </form>
+    </div>
   )
 }
 

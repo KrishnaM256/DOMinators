@@ -51,7 +51,7 @@ const Login = () => {
   }
 
   return (
-    <>
+    <div className="flex justify-center items-center w-[100%]">
       <form className={`form `} onSubmit={handleSubmit}>
         <div className="formDiv">
           <div className="formHeading">
@@ -94,9 +94,8 @@ const Login = () => {
             {isLoading ? 'Signing In...' : 'Sign in'}
           </button>
         </div>
-        {isLoading && <Loader />}
       </form>
-    </>
+    </div>
   )
 }
 
