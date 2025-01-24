@@ -1,17 +1,19 @@
 import React, { useState } from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom' // Import useNavigate
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
 import './Navbar.css'
 import { useLogoutMutation } from '../../../redux/api/usersApiSlice'
 import { logout } from '../../../redux/features/auth/authSlice'
+import { toast } from 'react-toastify' // Import toast
 
 const Navbar = () => {
   const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.auth)
-  const navigate = useNavigate() // Initialize useNavigate hook
+  const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [logoutApiCall] = useLogoutMutation()
+
   const handleLogout = async () => {
     try {
       await logoutApiCall().unwrap()
@@ -19,11 +21,13 @@ const Navbar = () => {
       navigate('/login')
       toast.success('Logged out successfully!')
     } catch (error) {
-      console.log(error)
+      console.error('Error during logout:', error)
+      toast.error('Failed to log out. Please try again.')
     }
   }
+
   const goToLeaderboard = () => {
-    navigate('/leaderboard') // Navigate to leaderboard page
+    navigate('/leaderboard')
   }
 
   return (
@@ -38,7 +42,6 @@ const Navbar = () => {
         <Link to="/community" className="navbar-link">
           Community
         </Link>
-        {/* Use the function-based navigation for leaderboard */}
         <button className="navbar-link" onClick={goToLeaderboard}>
           Leaderboard
         </button>
