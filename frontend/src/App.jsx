@@ -10,11 +10,16 @@ import Challenges from './Profile/Challenges'
 import Journey from './Profile/Journey'
 import Quizzes from './Profile/Quizzes'
 import Community from './components/community/community'
+import UploadImg from './components/UploadImg/UploadImg.jsx';
+import { Link } from 'react-router-dom'
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <Link to="/earn" className="earn-btn">
+        Click and Earn
+      </Link>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -24,6 +29,7 @@ function App() {
         <Route path="/journey" element={<Journey />} />
         <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/earn" element={<UploadImg />} />
       </Routes>
     </Router>
   )
