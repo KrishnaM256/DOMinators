@@ -1,67 +1,52 @@
-// Sidebar.js
 import React from 'react';
-import { FaBars, FaTimes } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // For navigation
+import { Link } from 'react-router-dom';
 
-const Sidebar = ({ sidebarOpen, toggleSidebar }) => {
-  const navigate = useNavigate(); // Hook to navigate between routes
-
-  // Handle navigation
-  const navigateTo = (path) => {
-    navigate(path); // Navigate to the specified path
-    toggleSidebar(); // Close the sidebar after clicking an item
-  };
-
+const Sidebar = () => {
   return (
-    <div
-      className={`fixed top-0 left-0 h-full bg-[#3E7B27] text-white shadow-lg transform transition-transform duration-300 ease-in-out ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}
-      style={{ width: '250px' }}
-    >
-      <div className="flex items-center justify-between px-4 py-3 border-b border-[#85A947]">
-        <h2 className="text-xl font-bold">Menu</h2>
-        <button
-          className="text-white focus:outline-none"
-          onClick={toggleSidebar}
-          aria-label="Close Sidebar"
-        >
-          {sidebarOpen ? <FaTimes /> : <FaBars />} {/* Toggle icons */}
-        </button>
-      </div>
-      <ul className="mt-4 space-y-2">
-        {/* Dashboard */}
-        <li
-          className="px-4 py-2 hover:bg-[#85A947] rounded-lg cursor-pointer"
-          onClick={() => navigateTo('/dashboard')}
-        >
-          Dashboard
+    <div className="w-64 h-screen bg-gradient-to-b from-gray-800 to-gray-700 text-white p-6 shadow-lg">
+      <h2 className="text-2xl font-semibold text-[#85A947] mb-8">Menu</h2>
+      <ul className="space-y-4">
+        <li>
+          <Link
+            to="/profile-page"
+            className="block py-2 px-4 rounded-lg hover:bg-[#85A947] hover:text-white transition duration-200"
+          >
+            Profile
+          </Link>
         </li>
-        {/* Profile */}
-        <li
-          className="px-4 py-2 hover:bg-[#85A947] rounded-lg cursor-pointer"
-          onClick={() => navigateTo('/profile')}
-        >
-          Profile
+        <li>
+          <Link
+            to="/challenges"
+            className="block py-2 px-4 rounded-lg hover:bg-[#85A947] hover:text-white transition duration-200"
+          >
+            Challenges
+          </Link>
         </li>
-        {/* Challenges */}
-        <li
-          className="px-4 py-2 hover:bg-[#85A947] rounded-lg cursor-pointer"
-          onClick={() => navigateTo('/challenges')}
-        >
-          Challenges
+        <li>
+          <Link
+            to="/journey"
+            className="block py-2 px-4 rounded-lg hover:bg-[#85A947] hover:text-white transition duration-200"
+          >
+            Journey
+          </Link>
         </li>
-        {/* Community */}
-        <li
-          className="px-4 py-2 hover:bg-[#85A947] rounded-lg cursor-pointer"
-          onClick={() => navigateTo('/community')}
-        >
-          Community
+
+        <li>
+          <Link
+            to="/quizzes"
+            className="block py-2 px-4 rounded-lg hover:bg-[#85A947] hover:text-white transition duration-200"
+          >
+            Quizzes
+          </Link>
         </li>
-        {/* Logout */}
-        <li
-          className="px-4 py-2 hover:bg-[#85A947] rounded-lg cursor-pointer"
-          onClick={() => navigateTo('/logout')}
-        >
-          Logout
+        
+        <li>
+          <Link
+            to="/community"
+            className="block py-2 px-4 rounded-lg hover:bg-[#85A947] hover:text-white transition duration-200"
+          >
+            Community
+          </Link>
         </li>
       </ul>
     </div>

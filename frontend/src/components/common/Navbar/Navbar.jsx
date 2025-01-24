@@ -32,7 +32,7 @@ const Navbar = () => {
         <button className="navbar-link" onClick={goToLeaderboard}>
           Leaderboard
         </button>
-        <Link to="/sell" className="navbar-link">
+        <Link to="/profile-page" className="navbar-link">
           Sell
         </Link>
       </ul>
