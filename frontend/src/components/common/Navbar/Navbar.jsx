@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react' // Import useState
 import { Link, NavLink, useNavigate } from 'react-router-dom' // Import useNavigate
 import { useSelector } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
@@ -7,6 +7,7 @@ import './Navbar.css'
 const Navbar = () => {
   const { userInfo } = useSelector((state) => state.auth)
   const navigate = useNavigate() // Initialize useNavigate hook
+  const [dropdownOpen, setDropdownOpen] = useState(false) // Move useState here
 
   const handleLogout = () => {
     console.log('Logout clicked') // Replace with your actual logout logic

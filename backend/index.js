@@ -4,6 +4,7 @@ import connectDB from './config/connectDB.js'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import userRoutes from './routes/userRoutes.js'
+import profileRoutes from './routes/profileRoutes.js'
 
 import cors from 'cors'
 
@@ -27,6 +28,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/users', userRoutes)
+app.use('/api/profile',profileRoutes)
 
 app.listen(port, () => {
   console.log(`Running on server http://localhost:${port}`)
