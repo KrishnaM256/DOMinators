@@ -1,87 +1,58 @@
-import React, { useState } from 'react'
-import { IoBagOutline } from 'react-icons/io5'
-import { Link, NavLink, useNavigate } from 'react-router-dom' // Use NavLink instead of Link
-import { useDispatch, useSelector } from 'react-redux'
-import { BASE_URL } from '../../../redux/constants'
-import profileImg from '../../../assets/profile.svg'
-import Sidebar from './SideBar/Sidebar'
-import { IoMenu } from 'react-icons/io5'
-
+import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { BASE_URL, FRONT_URL } from '../../../redux/constants'
 import './Navbar.css'
-
 const Navbar = () => {
-  const [open, setOpen] = useState(false)
-
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
   const { userInfo } = useSelector((state) => state.auth)
-  const profile = userInfo?.avatar
-    ? BASE_URL + '/' + userInfo.avatar
-    : profileImg
-  console.log(profile)
+
+  const handleLogout = () => {
+    console.log('Logout clicked') // Replace with your actual logout logic
+  }
 
   return (
-    <>
-      <div style={{ height: '65px' }}></div>
-      {open && <Sidebar open={open} setOpen={setOpen} />}
-      <nav className="nav">
-        <ul>
-          <li className="logo">
-            <IoMenu className="icon menuIcon" onClick={() => setOpen(!open)} />
-            <p onClick={() => navigate('/')}>
-              Style <span>Nexus</span>
-            </p>
-          </li>
-          <div className="linkContainer">
-            <li>
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  isActive ? 'active navLink' : 'navLink'
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/catalog"
-                className={({ isActive }) =>
-                  isActive ? 'active navLink' : 'navLink'
-                }
-              >
-                Catalog
-              </NavLink>
-            </li>
+    <div className="navbar">
+      <Link to="/" className="navbar-logo">
+        DOMinators
+      </Link>
+      <ul className="navbar-links">
+        <Link to="/" className="navbar-link">
+          Home
+        </Link>
+        <Link to="/community" className="navbar-link">
+          Community
+        </Link>
+        <Link to="/leaderboard" className="navbar-link">
+          Leaderboard
+        </Link>
+        <Link to="/sell" className="navbar-link">
+          Sell
+        </Link>
+      </ul>
+      <div className="user-actions">
+        <div className="profile-points">Points</div>
+        {userInfo ? (
+          <img
+            src={
+              userInfo.avatar
+                ? `${BASE_URL}/avatar/${userInfo.avatar}`
+                : `${FRONT_URL}/profile.svg`
+            }
+            alt="profile"
+            className="profile-icon"
+          />
+        ) : (
+          <div className="auth-buttons">
+            <NavLink to="/signIn" className="signin-btn">
+              Sign in
+            </NavLink>
+            <Link to="/signUp" className="join-btn">
+              Join
+            </Link>
           </div>
-          <div className="cartContainer">
-            <>
-              {userInfo ? (
-                <div className="flexContainer">
-                  <li>
-                    <Link
-                      to="/cart"
-                      className={({ isActive }) =>
-                        isActive ? 'active' : 'icon '
-                      }
-                    >
-                      <IoBagOutline className="cart" />
-                    </Link>
-                  </li>
-                  <Link to={'/'} id="menuBtn">
-                    <img src={profile} className="profile-img" />
-                  </Link>
-                </div>
-              ) : (
-                <Link to="/login" className="login">
-                  Sign in/Sign up
-                </Link>
-              )}
-            </>
-          </div>
-        </ul>
-      </nav>
-    </>
+        )}
+      </div>
+    </div>
   )
 }
 

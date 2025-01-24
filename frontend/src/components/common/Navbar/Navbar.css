@@ -1,116 +1,162 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,434;1,434&display=swap');
+/* Navbar Styling with Sustainability Theme */
+:root {
+  --primary-green: #2ecc71;
+  --secondary-green: #27ae60;
+  --light-green: #3498db;
+  --background-color: #f4f6f7;
+  --text-color: #2c3e50;
+  --transition-speed: 0.3s;
+}
 
-.nav {
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   position: fixed;
-  width: 100%;
-  background-color: #3a2e2a;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
-  z-index: 100;
   top: 0;
   left: 0;
-  padding: 10px 70px;
+  right: 0;
+  z-index: 1000;
+  transition: background-color var(--transition-speed) ease;
 }
 
-.nav ul {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.dropdown ul {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
-.logo {
-  font-family: 'Playfair Display', serif;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  display: flex;
-  border-radius: 0.5rem;
-  cursor: pointer;
-}
-.logo span {
-  font-weight: bold;
-  font-style: oblique;
+.navbar:hover {
+  background-color: var(--background-color);
 }
 
-.linkContainer,
-.cartContainer {
-  display: flex;
-  align-items: center;
-}
-
-.nav ul li {
-  list-style: none;
-}
-
-.nav ul li a {
+.navbar-logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: var(--primary-green);
   text-decoration: none;
-  transition: all 0.3s ease-in-out;
-  font-size: 18px;
-  color: white;
+  letter-spacing: -1px;
+  transition: transform var(--transition-speed) ease;
 }
 
-.linkContainer {
-  width: 40%;
-  justify-content: space-evenly;
-  align-items: center;
+.navbar-logo:hover {
+  transform: scale(1.05);
 }
 
-.linkContainer a:hover,
-.dropdown ul li a:hover {
-  text-decoration: underline;
-}
-
-.login {
-  font-size: 15px;
-}
-
-.login:hover {
-  text-decoration: underline;
-}
-
-.profile-img {
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  cursor: pointer;
-  object-fit: cover;
-  border: 2px solid white;
-}
-.cart {
-  font-size: 30px;
-}
-.nav ul li a.active {
-  text-decoration: underline;
-}
-.menuIcon {
-  display: none;
-}
-.logo > p {
+.navbar-links {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  gap: 2rem;
+  list-style: none;
   margin: 0;
-  font-size: 20px;
-  color: white;
-}
-.flexContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 25px;
+  padding: 0;
 }
 
-@media (max-width: 1050px) {
-  .nav {
-    padding: 10px 20px;
+.navbar-link {
+  text-decoration: none;
+  color: var(--text-color);
+  font-weight: 600;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+}
+
+.navbar-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: var(--primary-green);
+  transition: width var(--transition-speed) ease;
+}
+
+.navbar-link:hover {
+  color: var(--primary-green);
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.profile-points {
+  background-color: var(--light-green);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color var(--transition-speed) ease;
+}
+
+.profile-points:hover {
+  background-color: var(--secondary-green);
+}
+
+.profile-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--primary-green);
+  transition: transform var(--transition-speed) ease;
+}
+
+.profile-icon:hover {
+  transform: rotate(360deg);
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.signin-btn,
+.join-btn {
+  text-decoration: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 25px;
+  font-weight: 600;
+  transition: all var(--transition-speed) ease;
+}
+
+.signin-btn {
+  color: var(--primary-green);
+  border: 2px solid var(--primary-green);
+}
+
+.join-btn {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.signin-btn:hover {
+  background-color: var(--primary-green);
+  color: white;
+}
+
+.join-btn:hover {
+  background-color: var(--secondary-green);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    padding: 1rem;
   }
-  .linkContainer {
-    display: none;
+
+  .navbar-links {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
   }
-  .menuIcon {
-    display: block;
+
+  .user-actions {
+    margin-top: 1rem;
+    flex-direction: column;
   }
 }
