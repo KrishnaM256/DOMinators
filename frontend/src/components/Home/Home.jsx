@@ -1,5 +1,6 @@
 import React from 'react'
 import Hero from './Hero'
+import hero1 from './../../assets/hero1.jpg'
 import './Home.css'
 const Home = () => {
   return (
@@ -26,16 +27,44 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <section className="aboutSection py-12">
+      <section className="aboutSection py-12 px-20">
         <h2 className="text-4xl text-center font-semibold text-green-700 mb-6">
           About Our Initiative
         </h2>
-        <p className="max-w-4xl mx-auto text-lg text-center text-gray-700 px-4">
-          Disposable paper cups contribute massively to environmental pollution,
-          affecting both the planet and human health. Our platform empowers
-          individuals and communities to reduce waste, make conscious choices,
-          and adopt eco-friendly alternatives.
-        </p>
+        <div className="flex flex-col md:flex-row items-center h-auto md:h-[500px]">
+          {/* Image Section */}
+          <div className="w-full md:w-1/2">
+            <img
+              src={hero1}
+              alt="Hero Image"
+              className="w-full h-[500px] object-cover rounded-lg shadow-md"
+            />
+          </div>
+          {/* Content Section */}
+          <div className="w-full md:w-1/2 flex justify-center items-center px-6 md:px-12">
+            <p className="text-lg text-gray-700 text-justify leading-relaxed">
+              Disposable paper cups contribute massively to environmental
+              pollution, affecting both the planet and human health. Over 500
+              billion paper cups are used globally each year, leading to
+              deforestation, excessive waste, and pollution of oceans and
+              landfills.
+              <br />
+              <br />
+              Our platform empowers individuals and communities to reduce waste,
+              make conscious choices, and adopt eco-friendly alternatives. By
+              leveraging technology and community-driven efforts, we aim to
+              build a global network of individuals, campuses, and organizations
+              committed to sustainability.
+              <br />
+              <br />
+              Join us in making a lasting impact on our planet! Together, we can
+              be part of the solution and reduce our collective carbon
+              footprint. Let’s work towards a future where paper cups are no
+              longer a threat to the environment. The change starts with us, one
+              cup at a time.
+            </p>
+          </div>
+        </div>
       </section>
 
       {/* How It Works Section */}

@@ -1,20 +1,20 @@
-import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate
-import { useSelector } from 'react-redux';
-import { BASE_URL, FRONT_URL } from '../../../redux/constants';
-import './Navbar.css';
+import React from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom' // Import useNavigate
+import { useSelector } from 'react-redux'
+import { BASE_URL, FRONT_URL } from '../../../redux/constants'
+import './Navbar.css'
 
 const Navbar = () => {
-  const { userInfo } = useSelector((state) => state.auth);
-  const navigate = useNavigate(); // Initialize useNavigate hook
+  const { userInfo } = useSelector((state) => state.auth)
+  const navigate = useNavigate() // Initialize useNavigate hook
 
   const handleLogout = () => {
-    console.log('Logout clicked'); // Replace with your actual logout logic
-  };
+    console.log('Logout clicked') // Replace with your actual logout logic
+  }
 
   const goToLeaderboard = () => {
-    navigate('/leaderboard'); // Navigate to leaderboard page
-  };
+    navigate('/leaderboard') // Navigate to leaderboard page
+  }
 
   return (
     <div className="navbar">
@@ -76,7 +76,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

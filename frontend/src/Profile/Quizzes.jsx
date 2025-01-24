@@ -1,5 +1,5 @@
-import React from 'react';
-import Sidebar from './Sidebar'; // Assuming Sidebar component exists
+import React from 'react'
+import Sidebar from './Sidebar' // Assuming Sidebar component exists
 
 const Quizzes = () => {
   return (
@@ -12,7 +12,9 @@ const Quizzes = () => {
       {/* Main content area */}
       <div className="flex-1 ml-64 bg-gradient-to-t from-indigo-50 via-purple-50 to-pink-50 flex items-center justify-center">
         <div className="container mx-auto p-8 bg-white rounded-lg shadow-xl">
-          <h2 className="text-4xl font-semibold text-center text-indigo-800 mb-6">Quizzes</h2>
+          <h2 className="text-4xl font-semibold text-center text-indigo-800 mb-6">
+            Quizzes
+          </h2>
           <div className="flex justify-center">
             {/* Wordwall Embed */}
             <iframe
@@ -27,7 +29,7 @@ const Quizzes = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Quizzes;
+export default Quizzes
