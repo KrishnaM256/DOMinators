@@ -68,7 +68,8 @@
   transition: width var(--transition-speed) ease;
 }
 
-.navbar-link:hover {
+.navbar-link:hover,
+.active.navbar-link {
   color: var(--primary-green);
 }
 

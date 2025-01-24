@@ -26,28 +26,44 @@ const Navbar = () => {
     }
   }
 
-  const goToLeaderboard = () => {
-    navigate('/leaderboard')
-  }
-
   return (
     <div className="navbar">
       <Link to="/" className="navbar-logo">
         DOMinators
       </Link>
       <ul className="navbar-links">
-        <Link to="/" className="navbar-link">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Home
-        </Link>
-        <Link to="/community" className="navbar-link">
+        </NavLink>
+        <NavLink
+          to="/community"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Community
-        </Link>
-        <button className="navbar-link" onClick={goToLeaderboard}>
+        </NavLink>
+        <NavLink
+          to="/leaderboard"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Leaderboard
-        </button>
-        <Link to="/profile-page" className="navbar-link">
+        </NavLink>
+        <NavLink
+          to="/sell"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Sell
-        </Link>
+        </NavLink>
       </ul>
       <div className="user-actions">
         <div className="profile-points">Points</div>
@@ -65,7 +81,7 @@ const Navbar = () => {
             />
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
+                <Link to="/profile-page" className="dropdown-item">
                   Profile
                 </Link>
                 <button
