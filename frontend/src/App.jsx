@@ -10,7 +10,8 @@ import Challenges from './Profile/Challenges'
 import Journey from './Profile/Journey'
 import Quizzes from './Profile/Quizzes'
 import Community from './components/community/community'
-
+import ChallengeStatus from './Profile/ChallengeStatus'
+import Register from './components/auth/register/Register'
 function App() {
   return (
     <Router>
@@ -18,12 +19,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile-page" element={<ProfilePage />} />
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/quizzes" element={<Quizzes />} />
         <Route path="/community" element={<Community />} />
+        <Route path="/challenge-status" element={<ChallengeStatus />}/>
       </Routes>
     </Router>
   )
