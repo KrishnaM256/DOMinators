@@ -1,17 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom' // Import useNavigate
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
 import './Navbar.css'
+import { useLogoutMutation } from '../../../redux/api/usersApiSlice'
+import { logout } from '../../../redux/features/auth/authSlice'
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.auth)
   const navigate = useNavigate() // Initialize useNavigate hook
-
-  const handleLogout = () => {
-    console.log('Logout clicked') // Replace with your actual logout logic
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [logoutApiCall] = useLogoutMutation()
+  const handleLogout = async () => {
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      navigate('/login')
+      toast.success('Logged out successfully!')
+    } catch (error) {
+      console.log(error)
+    }
   }
-
   const goToLeaderboard = () => {
     navigate('/leaderboard') // Navigate to leaderboard page
   }
