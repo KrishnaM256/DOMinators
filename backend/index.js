@@ -6,6 +6,7 @@ import path from 'path'
 import userRoutes from './routes/userRoutes.js'
 import profileRoutes from './routes/profileRoutes.js'
 
+import postRoutes from './routes/postRoutes.js'
 import cors from 'cors'
 
 configDotenv()
@@ -29,6 +30,7 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/users', userRoutes)
 app.use('/api/profile',profileRoutes)
+app.use('/api/posts', postRoutes)
 
 app.listen(port, () => {
   console.log(`Running on server http://localhost:${port}`)
