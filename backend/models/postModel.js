@@ -4,8 +4,8 @@ const postSchema = mongoose.Schema(
   {
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
     description: { type: String, required: true },
-    images: [{ type: String }], // URLs of uploaded images
-    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // List of user IDs
+    image: { type: String },
+    likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     comments: [
       {
         user: {

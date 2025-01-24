@@ -1,20 +1,29 @@
-import React, { useState } from 'react' // Import useState
-import { Link, NavLink, useNavigate } from 'react-router-dom' // Import useNavigate
-import { useSelector } from 'react-redux'
+import React, { useState } from 'react'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
 import './Navbar.css'
+import { useLogoutMutation } from '../../../redux/api/usersApiSlice'
+import { logout } from '../../../redux/features/auth/authSlice'
+import { toast } from 'react-toastify' // Import toast
 
 const Navbar = () => {
+  const dispatch = useDispatch()
   const { userInfo } = useSelector((state) => state.auth)
-  const navigate = useNavigate() // Initialize useNavigate hook
-  const [dropdownOpen, setDropdownOpen] = useState(false) // Move useState here
+  const navigate = useNavigate()
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [logoutApiCall] = useLogoutMutation()
 
-  const handleLogout = () => {
-    console.log('Logout clicked') // Replace with your actual logout logic
-  }
-
-  const goToLeaderboard = () => {
-    navigate('/leaderboard') // Navigate to leaderboard page
+  const handleLogout = async () => {
+    try {
+      await logoutApiCall().unwrap()
+      dispatch(logout())
+      navigate('/login')
+      toast.success('Logged out successfully!')
+    } catch (error) {
+      console.error('Error during logout:', error)
+      toast.error('Failed to log out. Please try again.')
+    }
   }
 
   return (
@@ -23,19 +32,38 @@ const Navbar = () => {
         DOMinators
       </Link>
       <ul className="navbar-links">
-        <Link to="/" className="navbar-link">
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Home
-        </Link>
-        <Link to="/community" className="navbar-link">
+        </NavLink>
+        <NavLink
+          to="/community"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Community
-        </Link>
-        {/* Use the function-based navigation for leaderboard */}
-        <button className="navbar-link" onClick={goToLeaderboard}>
+        </NavLink>
+        <NavLink
+          to="/leaderboard"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Leaderboard
-        </button>
-        <Link to="/profile-page" className="navbar-link">
+        </NavLink>
+        <NavLink
+          to="/sell"
+          className={({ isActive }) =>
+            isActive ? 'active navbar-link' : 'navbar-link'
+          }
+        >
           Sell
-        </Link>
+        </NavLink>
       </ul>
       <div className="user-actions">
         <div className="profile-points">Points</div>
@@ -53,7 +81,7 @@ const Navbar = () => {
             />
             {dropdownOpen && (
               <div className="dropdown-menu">
-                <Link to="/profile" className="dropdown-item">
+                <Link to="/profile-page" className="dropdown-item">
                   Profile
                 </Link>
                 <button

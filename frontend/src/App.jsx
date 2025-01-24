@@ -9,6 +9,7 @@ import ProfilePage from './Profile/ProfilePage'
 import Challenges from './Profile/Challenges'
 import Journey from './Profile/Journey'
 import Quizzes from './Profile/Quizzes'
+import Community from './components/community/community'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/quizzes" element={<Quizzes />} />
+        <Route path="/community" element={<Community />} />
       </Routes>
     </Router>
   )
