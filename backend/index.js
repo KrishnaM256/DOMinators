@@ -11,7 +11,9 @@ configDotenv()
 connectDB()
 
 const app = express()
+app.use(express.static('uploads'))
 app.use(cookieParser())
+app.use(express.urlencoded({ extended: true }))
 const port = process.env.PORT || 5000
 
 app.use(

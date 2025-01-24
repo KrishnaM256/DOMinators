@@ -1,13 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
+import { logout } from '../../../redux/features/auth/authSlice'
 import './Navbar.css'
+
 const Navbar = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false)
   const { userInfo } = useSelector((state) => state.auth)
+  const dispatch = useDispatch()
 
   const handleLogout = () => {
-    console.log('Logout clicked') // Replace with your actual logout logic
+    dispatch(logout())
+    setDropdownOpen(false)
   }
 
   return (
@@ -32,21 +37,37 @@ const Navbar = () => {
       <div className="user-actions">
         <div className="profile-points">Points</div>
         {userInfo ? (
-          <img
-            src={
-              userInfo.avatar
-                ? `${BASE_URL}/avatar/${userInfo.avatar}`
-                : `${FRONT_URL}/profile.svg`
-            }
-            alt="profile"
-            className="profile-icon"
-          />
+          <div className="profile-dropdown">
+            <img
+              src={
+                userInfo.avatar
+                  ? `${BASE_URL}/${userInfo.avatar}`
+                  : `${FRONT_URL}/profile.svg`
+              }
+              alt="profile"
+              className="profile-icon"
+              onClick={() => setDropdownOpen(!dropdownOpen)}
+            />
+            {dropdownOpen && (
+              <div className="dropdown-menu">
+                <Link to="/profile" className="dropdown-item">
+                  Profile
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="dropdown-item logout-btn"
+                >
+                  Logout
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
           <div className="auth-buttons">
-            <NavLink to="/signIn" className="signin-btn">
+            <NavLink to="/login" className="signin-btn">
               Sign in
             </NavLink>
-            <Link to="/signUp" className="join-btn">
+            <Link to="/register" className="join-btn">
               Join
             </Link>
           </div>
