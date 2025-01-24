@@ -16,6 +16,9 @@ function App() {
   return (
     <Router>
       <Navbar />
+      <Link to="/earn" className="earn-btn">
+        Click and Earn
+      </Link>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>

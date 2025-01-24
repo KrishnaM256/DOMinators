@@ -10,6 +10,7 @@ import {
   loginUser,
   logoutUser,
   deleteUser,
+  addReusableCup,
 } from '../controllers/userController.js'
 import { authenticate, authorized } from '../middlewares/authMiddleware.js'
 import { upload } from '../utils/multer.js'
@@ -24,7 +25,7 @@ router.post(
   upload.fields([{ name: 'avatar', maxCount: 1 }]),
   createUser
 )
-
+router.route('/incrementCups').post(addReusableCup)
 router.route('/auth').post(loginUser)
 router.route('/logout').post(logoutUser)
 router.route('/users-list').get(authenticate, authorized, getAllUsers)

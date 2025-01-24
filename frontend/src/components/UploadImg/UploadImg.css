@@ -1,0 +1,80 @@
+/* Ensure this is placed in your global CSS file or in a specific component CSS file */
+
+.upload-img-container {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto; /* Center the container with some margin */
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  position: relative;
+  top: 50px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.upload-form {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.webcam-container {
+  text-align: center;
+  margin-bottom: 20px;
+  top: 50px;
+}
+
+.btn-ern {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ern:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.bt-ern:hover {
+  background-color: #45a049;
+}
+
+.result {
+  font-size: 18px;
+  color: #333;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.upload-img-container .webcam-container {
+  max-width: 640px;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.upload-img-container .webcam-container video {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.upload-img-container .result {
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  margin-top: 10px;
+}

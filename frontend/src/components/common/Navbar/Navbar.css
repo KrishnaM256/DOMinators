@@ -203,6 +203,40 @@
   color: #721c24;
 }
 
+.earn-btn {
+  background: linear-gradient(135deg, #0ca53c, #1c40de);
+  color:  #fffbe0;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 15px 25px;
+  border-radius: 50px;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10;
+  border: none;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(13, 197, 166, 0.5);
+  cursor: pointer;
+  animation: bounce 2s infinite;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.earn-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 6px 15px rgba(13, 197, 166, 0.7);
+}
+
+/* Bounce animation */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .navbar {

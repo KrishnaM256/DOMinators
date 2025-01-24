@@ -45,6 +45,7 @@ const userSchema = mongoose.Schema(
       type: String,
       default: 'user',
     },
+    reusableCupsUsed: { type: Number, default: 0 },
   },
   {
     timestamps: true,
