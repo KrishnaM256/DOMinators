@@ -1,14 +1,20 @@
-import React from 'react'
-import { Link, NavLink } from 'react-router-dom'
-import { useSelector } from 'react-redux'
-import { BASE_URL, FRONT_URL } from '../../../redux/constants'
-import './Navbar.css'
+import React from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useSelector } from 'react-redux';
+import { BASE_URL, FRONT_URL } from '../../../redux/constants';
+import './Navbar.css';
+
 const Navbar = () => {
-  const { userInfo } = useSelector((state) => state.auth)
+  const { userInfo } = useSelector((state) => state.auth);
+  const navigate = useNavigate(); // Initialize useNavigate hook
 
   const handleLogout = () => {
-    console.log('Logout clicked') // Replace with your actual logout logic
-  }
+    console.log('Logout clicked'); // Replace with your actual logout logic
+  };
+
+  const goToLeaderboard = () => {
+    navigate('/leaderboard'); // Navigate to leaderboard page
+  };
 
   return (
     <div className="navbar">
@@ -22,9 +28,10 @@ const Navbar = () => {
         <Link to="/community" className="navbar-link">
           Community
         </Link>
-        <Link to="/leaderboard" className="navbar-link">
+        {/* Use the function-based navigation for leaderboard */}
+        <button className="navbar-link" onClick={goToLeaderboard}>
           Leaderboard
-        </Link>
+        </button>
         <Link to="/sell" className="navbar-link">
           Sell
         </Link>
@@ -53,7 +60,7 @@ const Navbar = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

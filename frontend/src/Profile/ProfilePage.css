@@ -1,0 +1,15 @@
+/* ProfilePage.css */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #EFE3C2;
+  }
+  
+  button {
+    cursor: pointer;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
