@@ -196,3 +196,26 @@ export const logoutUser = asyncHandler(async (req, res) => {
 
   res.status(200).json({ message: 'Logout successfully!' })
 })
+
+export const addReusableCup = asyncHandler(async (req, res) => {
+  // Find the user by their ID
+  const user = await User.findById(req.user._id)
+
+  // Check if user exists
+  if (!user) {
+    res.status(404)
+    throw new Error('User not found')
+  }
+
+  // Increment the reusableCupsUsed count
+  user.reusableCupsUsed += 1
+
+  // Save the updated user
+  await user.save()
+
+  // Send a response with the updated user data
+  res.json({
+    message: 'Reusable cup usage recorded',
+    reusableCupsUsed: user.reusableCupsUsed,
+  })
+})
