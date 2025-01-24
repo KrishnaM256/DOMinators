@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,434;1,434&display=swap');
+
+.nav {
+  position: fixed;
+  width: 100%;
+  background-color: #3a2e2a;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  top: 0;
+  left: 0;
+  padding: 10px 70px;
+}
+
+.nav ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown ul {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.logo {
+  font-family: 'Playfair Display', serif;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  display: flex;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+.logo span {
+  font-weight: bold;
+  font-style: oblique;
+}
+
+.linkContainer,
+.cartContainer {
+  display: flex;
+  align-items: center;
+}
+
+.nav ul li {
+  list-style: none;
+}
+
+.nav ul li a {
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+  color: white;
+}
+
+.linkContainer {
+  width: 40%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.linkContainer a:hover,
+.dropdown ul li a:hover {
+  text-decoration: underline;
+}
+
+.login {
+  font-size: 15px;
+}
+
+.login:hover {
+  text-decoration: underline;
+}
+
+.profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  cursor: pointer;
+  object-fit: cover;
+  border: 2px solid white;
+}
+.cart {
+  font-size: 30px;
+}
+.nav ul li a.active {
+  text-decoration: underline;
+}
+.menuIcon {
+  display: none;
+}
+.logo > p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 20px;
+  color: white;
+}
+.flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+}
+
+@media (max-width: 1050px) {
+  .nav {
+    padding: 10px 20px;
+  }
+  .linkContainer {
+    display: none;
+  }
+  .menuIcon {
+    display: block;
+  }
+}
