@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import confetti from "canvas-confetti"; // Import the confetti library
 import "./UploadImg.css";
-
+import { useIncrementPointsMutation } from "../../redux/api/usersApiSlice";
+import {toast} from 'react-toastify'
 const UploadImg = () => {
   const [selectedFile, setSelectedFile] = useState(null);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
-
+const [incrementCups] = useIncrementPointsMutation()
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
@@ -51,7 +52,17 @@ const UploadImg = () => {
       setLoading(false);
     }
   };
+useEffect(()=>{
+if(result=="Reusable"){
+  try{
+    incrementCups().unwrap()
+    toast.success("Points added successfully!")
+  }catch(error){
+    toast.error("Unable to add points")
+  }
 
+}
+},[result])
   const triggerConfetti = () => {
     // Confetti effect
     confetti({

@@ -12,6 +12,7 @@ import Quizzes from './Profile/Quizzes'
 import Community from './components/community/community'
 import UploadImg from './components/UploadImg/UploadImg.jsx';
 import { Link } from 'react-router-dom'
+import Register from './components/auth/register/Register.jsx'
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/register" element={<Register />}></Route>
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/profile-page" element={<ProfilePage />} />
         <Route path="/challenges" element={<Challenges />} />

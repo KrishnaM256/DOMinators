@@ -66,7 +66,7 @@ const Navbar = () => {
         </NavLink>
       </ul>
       <div className="user-actions">
-        <div className="profile-points">Points</div>
+        <div className="profile-points">{userInfo?.reusableCupsUsed||0}</div>
         {userInfo ? (
           <div className="profile-dropdown">
             <img

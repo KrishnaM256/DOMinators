@@ -199,6 +199,7 @@ export const logoutUser = asyncHandler(async (req, res) => {
 
 export const addReusableCup = asyncHandler(async (req, res) => {
   // Find the user by their ID
+  console.log(req.user)
   const user = await User.findById(req.user._id)
 
   // Check if user exists
@@ -208,7 +209,7 @@ export const addReusableCup = asyncHandler(async (req, res) => {
   }
 
   // Increment the reusableCupsUsed count
-  user.reusableCupsUsed += 1
+  user.reusableCupsUsed += 10
 
   // Save the updated user
   await user.save()
