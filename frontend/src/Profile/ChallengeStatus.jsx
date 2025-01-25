@@ -9,16 +9,21 @@ const ChallengeStatus = () => {
   const [isSuccess, setIsSuccess] = useState(false);
 
   useEffect(() => {
-    // Log the user's reusable cups to the console
-    if (userInfo) {
-      console.log(`Reusable cups used: ${userInfo.reusableCupsUsed}`);
-    } else {
+    if (!userInfo) {
       console.log('User data not available.');
+      return;
     }
 
+    // Log the entire userInfo to verify reusableCupsUsed
+    console.log('User Info:', userInfo);
+
+    // Default reusableCupsUsed to 0 if undefined
+    const reusableCupsUsed = userInfo?.reusableCupsUsed ?? 0;
+    console.log(`Reusable cups used: ${reusableCupsUsed}`);
+    
     const delay = Math.random() * 2000 + 2000; // Random delay between 2-4 seconds
     setTimeout(() => {
-      if (userInfo && userInfo.reusableCups === 5) {
+      if (reusableCupsUsed >= 50) {
         setIsSuccess(true);
       }
       setLoading(false);

@@ -12,13 +12,14 @@ import Quizzes from './Profile/Quizzes'
 import Community from './components/community/community'
 import ChallengeStatus from './Profile/ChallengeStatus'
 import Register from './components/auth/register/Register'
+import { Link } from 'react-router-dom'
 function App() {
   return (
     <Router>
       <Navbar />
-      <Link to="/earn" className="earn-btn">
+      {/* <Link to="/earn" className="earn-btn">
         Click and Earn
-      </Link>
+      </Link> */}
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
