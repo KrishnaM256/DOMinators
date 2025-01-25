@@ -25,9 +25,9 @@ const Challenges = () => {
               <h2 className="text-3xl font-semibold text-green-900 mb-8">Weekly Challenges</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <ChallengeCard
-                  title="50 Points Challenge"
-                  description="Earn 50 points by completing eco-friendly tasks."
-                  points="50"
+                  title="30 Points Challenge"
+                  description="Earn 30 points by completing eco-friendly tasks."
+                  points="30"
                   rewards="Get a Dominos coupon for 2 free pizzas!"
                   image="/public/dominos.png" // Path from /public folder
                   onComplete={handleCompleteChallenge}

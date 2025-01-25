@@ -1,26 +1,65 @@
-/* Loading Spinner */
-.loading-spinner {
-    border: 4px solid #f3f3f3;
-    border-top: 4px solid #4caf50;
+/* Confetti Effect */
+@keyframes fall {
+    0% {
+      transform: translateY(-100vh) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  .confetti-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  
+  .confetti-piece {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #ff7f50;
+    opacity: 0.9;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    animation: spin 2s linear infinite;
+    animation: fall 2s ease-in infinite;
   }
   
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  .confetti-piece.rotate-45 {
+    animation: fall 2s ease-in infinite, rotate 3s linear infinite;
   }
   
-  /* Success and Failure Styles */
-  .success-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   
-  .failure-container {
-    text-align: center;
+  /* Button Hover Transition */
+  .voucher-btn:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+  }
+  
+  /* Pop-Up Animation */
+  @keyframes pop-up {
+    0% {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .animate-pop-up {
+    animation: pop-up 0.5s ease-out;
   }
   

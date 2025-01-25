@@ -5,7 +5,7 @@ import cookieParser from 'cookie-parser'
 import path from 'path'
 import userRoutes from './routes/userRoutes.js'
 import profileRoutes from './routes/profileRoutes.js'
-import imageRoute from './routes/imageRoute.js';
+import imageRoute from './routes/imageRoute.js'
 
 import postRoutes from './routes/postRoutes.js'
 import cors from 'cors'
@@ -30,7 +30,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 app.use('/api/users', userRoutes)
-app.use('/api/profile',profileRoutes)
+app.use('/api/profile', profileRoutes)
 app.use('/api/posts', postRoutes)
 app.use('/api/earn', imageRoute)
 

@@ -11,8 +11,9 @@ import Journey from './Profile/Journey'
 import Quizzes from './Profile/Quizzes'
 import Community from './components/community/community'
 import ChallengeStatus from './Profile/ChallengeStatus'
-import Register from './components/auth/register/Register'
 import { Link } from 'react-router-dom'
+import Register from './components/auth/register/Register.jsx'
+
 function App() {
   return (
     <Router>

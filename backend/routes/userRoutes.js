@@ -25,7 +25,7 @@ router.post(
   upload.fields([{ name: 'avatar', maxCount: 1 }]),
   createUser
 )
-router.route('/incrementCups').post(addReusableCup)
+router.route('/incrementCups').post(authenticate,addReusableCup)
 router.route('/auth').post(loginUser)
 router.route('/logout').post(logoutUser)
 router.route('/users-list').get(authenticate, authorized, getAllUsers)
@@ -33,7 +33,7 @@ router.route('/users-list').get(authenticate, authorized, getAllUsers)
 router
   .route('/:id')
   .delete(authenticate, authorized, deleteUser)
-  .get(authenticate, authorized, getUserById)
+  .get(authenticate, getUserById)
   .post(authenticate, authorized, updateUserById)
 
 export default router

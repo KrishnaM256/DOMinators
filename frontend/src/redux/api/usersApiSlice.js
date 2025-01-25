@@ -62,6 +62,13 @@ export const usersApiSlice = apiSlice.injectEndpoints({
       }),
       invalidatesTags: ['User'],
     }),
+    incrementPoints : builder.mutation({
+      query:()=>({
+        url:`${USERS_URL}/incrementCups`,
+        method:'POST',
+        credentials:'include'
+      })
+    })
   }),
 })
 
@@ -74,4 +81,5 @@ export const {
   useGetUserDetailsQuery,
   useDeleteUserMutation,
   useUpdateUserMutation,
+  useIncrementPointsMutation
 } = usersApiSlice

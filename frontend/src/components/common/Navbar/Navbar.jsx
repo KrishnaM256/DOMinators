@@ -3,7 +3,7 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL, FRONT_URL } from '../../../redux/constants'
 import './Navbar.css'
-import { useLogoutMutation } from '../../../redux/api/usersApiSlice'
+import { useGetUserDetailsQuery, useLogoutMutation } from '../../../redux/api/usersApiSlice'
 import { logout } from '../../../redux/features/auth/authSlice'
 import { toast } from 'react-toastify' // Import toast
 
@@ -13,7 +13,8 @@ const Navbar = () => {
   const navigate = useNavigate()
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [logoutApiCall] = useLogoutMutation()
-
+console.log(userInfo)
+const {data } = useGetUserDetailsQuery(userInfo?._id)
   const handleLogout = async () => {
     try {
       await logoutApiCall().unwrap()
@@ -66,7 +67,7 @@ const Navbar = () => {
         </NavLink>
       </ul>
       <div className="user-actions">
-        <div className="profile-points">Points</div>
+        <div className="profile-points">🏆{data?.reusableCupsUsed||0}</div>
         {userInfo ? (
           <div className="profile-dropdown">
             <img
