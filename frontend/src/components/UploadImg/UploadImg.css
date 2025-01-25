@@ -1,80 +1,93 @@
-/* Ensure this is placed in your global CSS file or in a specific component CSS file */
+/* UploadImg.css */
 
 .upload-img-container {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto; /* Center the container with some margin */
+  width: 90%;
+  max-width: 600px;
+  height: 400px;
+  margin: 250px auto; /* Center the container */
   padding: 20px;
   background-color: #f9f9f9;
-  border-radius: 8px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  position: relative;
-  top: 50px;
+  text-align: center;
+  font-family: Arial, sans-serif;
 }
 
-h1 {
-  text-align: center;
+.upload-img-container h1 {
   font-size: 24px;
+  color: #098e3e;
+  font-weight: bolder;
+  margin-bottom: 10px;
+}
+
+.upload-img-container h2 {
+  font-size: 18px;
+  color: #187db8;
   margin-bottom: 20px;
-  color: #333;
+  font-weight: 400;
 }
 
 .upload-form {
-  text-align: center;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px; /* Space between input and button */
 }
 
-.webcam-container {
-  text-align: center;
-  margin-bottom: 20px;
-  top: 50px;
+.upload-form input[type="file"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.3s ease;
 }
 
-.btn-ern {
+.upload-form input[type="file"]:hover {
+  border-color: #4caf50;
+}
+
+.upload-form button {
   padding: 10px 20px;
   font-size: 16px;
-  background-color: #4CAF50;
+  background-color: #5679ec;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.btn-ern:disabled {
+.upload-form button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.bt-ern:hover {
+.upload-form button:hover:not(:disabled) {
   background-color: #45a049;
+  transform: translateY(-2px);
 }
 
 .result {
-  font-size: 18px;
-  color: #333;
-  text-align: center;
-  font-weight: bold;
+  font-size: 16px;
   margin-top: 20px;
+  font-weight: bold;
+  color: #333;
+  padding: 10px;
+  background-color: #e8f5e9;
+  border-radius: 8px;
+  display: inline-block;
 }
 
-.upload-img-container .webcam-container {
-  max-width: 640px;
-  margin: 0 auto;
-  border: 2px solid #ddd;
+.congratulations-message {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #1b5e20;
+  background-color: #c8e6c9;
   padding: 10px;
   border-radius: 8px;
-  background-color: #fff;
-}
-
-.upload-img-container .webcam-container video {
-  max-width: 100%;
-  border-radius: 8px;
-}
-
-.upload-img-container .result {
-  font-size: 16px;
-  color: #555;
-  text-align: center;
-  margin-top: 10px;
+  display: inline-block;
 }
