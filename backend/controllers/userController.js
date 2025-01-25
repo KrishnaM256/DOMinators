@@ -20,6 +20,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
       address: user.address,
       city: user.city,
       state: user.state,
+      reusableCupsUsed:user.reusableCupsUsed,
       role: updateUserProfile.role,
     })
   } else {

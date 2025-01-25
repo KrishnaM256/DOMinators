@@ -33,7 +33,7 @@ router.route('/users-list').get(authenticate, authorized, getAllUsers)
 router
   .route('/:id')
   .delete(authenticate, authorized, deleteUser)
-  .get(authenticate, authorized, getUserById)
+  .get(authenticate, getUserById)
   .post(authenticate, authorized, updateUserById)
 
 export default router
