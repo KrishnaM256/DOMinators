@@ -14,7 +14,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false)
   const [logoutApiCall] = useLogoutMutation()
 console.log(userInfo)
-const {data } = useGetUserDetailsQuery(userInfo._id)
+const {data } = useGetUserDetailsQuery(userInfo?._id)
   const handleLogout = async () => {
     try {
       await logoutApiCall().unwrap()
@@ -57,14 +57,7 @@ const {data } = useGetUserDetailsQuery(userInfo._id)
         >
           Leaderboard
         </NavLink>
-        <NavLink
-          to="/sell"
-          className={({ isActive }) =>
-            isActive ? 'active navbar-link' : 'navbar-link'
-          }
-        >
-          Sell
-        </NavLink>
+       
       </ul>
       <div className="user-actions">
         <div className="profile-points">🏆{data?.reusableCupsUsed||0}</div>

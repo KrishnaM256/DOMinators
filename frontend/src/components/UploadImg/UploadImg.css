@@ -3,7 +3,6 @@
 .upload-img-container {
   width: 90%;
   max-width: 600px;
-  height: 400px;
   margin: 250px auto; /* Center the container */
   padding: 20px;
   background-color: #f9f9f9;
@@ -49,8 +48,9 @@
   border-color: #4caf50;
 }
 
-.upload-form button {
+.upload-img-container button {
   padding: 10px 20px;
+  margin: 5px;
   font-size: 16px;
   background-color: #5679ec;
   color: white;
@@ -60,12 +60,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
-.upload-form button:disabled {
+.upload-img-container button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
 }
 
-.upload-form button:hover:not(:disabled) {
+.upload-img-container button:hover:not(:disabled) {
   background-color: #45a049;
   transform: translateY(-2px);
 }

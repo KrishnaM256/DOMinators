@@ -31,7 +31,7 @@ const Hero = () => {
         <p className="hero-tagline">Every Sip Counts – Start Today!</p>
       </div>
       <div className="hero-content-right w-[50%] h-[100%]">
-        <img src={hero2} alt="" className="w-[100%] h-[100%]" />
+        <img src={hero2} alt="" className="w-[100%] h-[100%] my-20" />
       </div>
     </div>
   )

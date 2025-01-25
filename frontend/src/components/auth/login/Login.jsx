@@ -51,7 +51,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex justify-center items-center w-[100%]">
+    <div className="flex justify-center items-center w-[100%] min-h-[100vh]">
       <form className={`form `} onSubmit={handleSubmit}>
         <div className="formDiv">
           <div className="formHeading">
