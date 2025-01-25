@@ -2,9 +2,11 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import confetti from "canvas-confetti"; // Import the confetti library
 import "./UploadImg.css";
-import { useIncrementPointsMutation } from "../../redux/api/usersApiSlice";
+import { useGetUserDetailsQuery, useIncrementPointsMutation } from "../../redux/api/usersApiSlice";
 import {toast} from 'react-toastify'
+import { useSelector } from "react-redux";
 const UploadImg = () => {
+  const {userInfo} = useSelector(state=>state.auth)
   const [selectedFile, setSelectedFile] = useState(null);
   const [result, setResult] = useState("");
   const [loading, setLoading] = useState(false);
@@ -12,6 +14,7 @@ const [incrementCups] = useIncrementPointsMutation()
   const handleFileChange = (event) => {
     setSelectedFile(event.target.files[0]);
   };
+const {data ,refetch} = useGetUserDetailsQuery(userInfo._id)
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -45,18 +48,21 @@ const [incrementCups] = useIncrementPointsMutation()
       if (prediction === "Reusable") {
         triggerConfetti();
       }
+      refetch()
     } catch (error) {
       console.error("Error occurred while sending the request:", error);
       setResult("Error occurred while predicting.");
     } finally {
       setLoading(false);
     }
+    refetch()
   };
 useEffect(()=>{
 if(result=="Reusable"){
   try{
     incrementCups().unwrap()
     toast.success("Points added successfully!")
+    refetch()
   }catch(error){
     toast.error("Unable to add points")
   }
