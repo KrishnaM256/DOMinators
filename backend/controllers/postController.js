@@ -74,8 +74,8 @@ export const addComment = asyncHandler(async (req, res) => {
 
 export const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find()
-    .populate('user', 'name avatar') // Include user details
-    .populate('comments.user', 'name avatar') // Include comment user details
+    .populate('user', 'firstName lastName avatar city state') // Include user details
+    .populate('comments.user', 'firstName lastName avatar city state') // Include comment user details
     .sort('-createdAt')
 
   res.status(200).json(posts)
