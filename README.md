@@ -51,7 +51,7 @@ cd frontend
 npm install
 
 # For backend
-cd ../backend
+cd backend
 npm install
 
 PORT=5000
@@ -62,11 +62,11 @@ MONGO_URI=your_mongodb_connection_string
 nodemon
 
 # Start the frontend server
-cd ../frontend
+cd frontend
 npm run dev
 
 
-
+# Fork repo
 git fork https://github.com/your-username/sustainable-cup-initiative.git
 
 
