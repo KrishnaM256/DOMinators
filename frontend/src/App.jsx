@@ -13,14 +13,15 @@ import Community from './components/community/community'
 import ChallengeStatus from './Profile/ChallengeStatus'
 import { Link } from 'react-router-dom'
 import Register from './components/auth/register/Register.jsx'
+import UploadImg from './components/UploadImg/UploadImg.jsx'
 
 function App() {
   return (
     <Router>
       <Navbar />
-      {/* <Link to="/earn" className="earn-btn">
+      <Link to="/earn" className="earn-btn">
         Click and Earn
-      </Link> */}
+      </Link>
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
@@ -30,6 +31,7 @@ function App() {
         <Route path="/challenges" element={<Challenges />} />
         <Route path="/journey" element={<Journey />} />
         <Route path="/quizzes" element={<Quizzes />} />
+        <Route path="/earn" element={<UploadImg />} />
         <Route path="/community" element={<Community />} />
         <Route path="/challenge-status" element={<ChallengeStatus />}/>
       </Routes>

@@ -2,20 +2,21 @@ import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { FaCheckCircle } from 'react-icons/fa';
 import './ChallengeStatus.css';
+import { useGetUserDetailsQuery } from '../redux/api/usersApiSlice';
 
 const ChallengeStatus = () => {
   const { userInfo } = useSelector(state => state.auth);
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
   const [carbonFootprintSaved, setCarbonFootprintSaved] = useState(0);
-
+const{data} = useGetUserDetailsQuery(userInfo?._id)
   useEffect(() => {
     if (!userInfo) {
       console.log('User data not available.');
       return;
     }
 
-    const reusableCupsUsed = userInfo?.reusableCupsUsed ?? 0;
+    const reusableCupsUsed = data?.reusableCupsUsed ?? 0;
 
     // Carbon Footprint Calculation
     const carbonFootprintDisposableCup = 0.05; // kg CO2 per disposable cup
