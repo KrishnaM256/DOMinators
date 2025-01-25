@@ -21,7 +21,9 @@ export const getUserProfile = asyncHandler(async (req, res) => {
       city: user.city,
       state: user.state,
       reusableCupsUsed:user.reusableCupsUsed,
-      role: updateUserProfile.role,
+      role: user.role, 
+      reusableCupsUsed: user.reusableCupsUsed
+
     })
   } else {
     res.status(404)
@@ -32,7 +34,7 @@ export const getUserProfile = asyncHandler(async (req, res) => {
 export const updateUserProfile = asyncHandler(async (req, res) => {
   const user = await User.findById(req.user._id)
   console.log(user)
-  // console.log(req.body)
+  console.log(req.body)
 
   if (user) {
     user.firstName = req.body.firstName
@@ -42,6 +44,8 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
     user.address = req.body.address
     user.city = req.body.city
     user.state = req.body.state
+    user.reusableCupsUsed= req.body.reusableCupsUsed
+   
 
     if (req.body.password) {
       user.password = req.body.password
@@ -58,6 +62,7 @@ export const updateUserProfile = asyncHandler(async (req, res) => {
       city: updatedUser.city,
       state: updatedUser.state,
       role: updatedUser.role,
+      reusableCupsUsed: updatedUser.reusableCupsUsed
     })
   }
 })
@@ -98,6 +103,8 @@ export const updateUserById = asyncHandler(async (req, res) => {
     user.city = req.body.city
     user.state = req.body.state
     user.role = req.body.role
+    user.reusableCupsUsed= req.body.reusableCupsUsed
+
     const updatedUser = await user.save()
     res.status(200).json({
       firstName: updatedUser.firstName,
@@ -108,6 +115,7 @@ export const updateUserById = asyncHandler(async (req, res) => {
       city: updatedUser.city,
       state: updatedUser.state,
       role: updatedUser.role,
+      reusableCupsUsed: updatedUser.reusableCupsUsed
     })
   } else {
     res.status(404)

@@ -1,18 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaCheck, FaTrophy } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Sidebar from './Sidebar'; // Assuming Sidebar component exists
 import Confetti from 'react-confetti'; // Importing the confetti package
+import { useSelector } from 'react-redux';
 
 const Journey = () => {
-  const [completed, setCompleted] = useState(3); // Example: 3 challenges done
   const totalChallenges = 6; // Total number of challenges
+  const [completedChallenges, setCompletedChallenges] = useState(3); // Start at stage 3
+  const [animating, setAnimating] = useState(false);
 
-  const handleChallengeClick = (index) => {
-    if (index <= completed) {
-      setCompleted(index + 1); // Mark challenge as complete when clicked
+  useEffect(() => {
+    // Automatically advance to stage 4 as soon as component is mounted
+    if (completedChallenges < totalChallenges) {
+      setAnimating(true);
+      const nextStage = completedChallenges + 1;
+      setTimeout(() => {
+        setCompletedChallenges(nextStage);
+        setAnimating(false); // Stop the animation after transition
+      }, 500); // Adjust the delay for the animation effect
     }
-  };
+  }, [completedChallenges]); // This effect runs whenever completedChallenges changes
 
   return (
     <div className="relative flex min-h-screen bg-gradient-to-br from-indigo-400 via-purple-500 to-pink-600">
@@ -26,7 +34,7 @@ const Journey = () => {
         <div className="container mx-auto p-8">
 
           {/* Confetti Explosion for last stage */}
-          {completed === totalChallenges && (
+          {completedChallenges === totalChallenges && (
             <Confetti width={window.innerWidth} height={window.innerHeight} />
           )}
 
@@ -37,10 +45,10 @@ const Journey = () => {
             <div className="w-full h-4 bg-gray-300 rounded-full">
               <div
                 className="h-full bg-gradient-to-r from-green-500 to-teal-400 rounded-full"
-                style={{ width: `${(completed / totalChallenges) * 100}%` }}
+                style={{ width: `${(completedChallenges / totalChallenges) * 100}%` }}
               />
             </div>
-            <p className="mt-4 text-xl font-semibold text-green-500">{completed} of {totalChallenges} Challenges Completed!</p>
+            <p className="mt-4 text-xl font-semibold text-green-500">{completedChallenges} of {totalChallenges} Challenges Completed!</p>
           </div>
 
           {/* Roadmap */}
@@ -53,24 +61,16 @@ const Journey = () => {
                 <motion.div
                   key={index}
                   className={`relative flex items-center justify-center w-16 h-16 rounded-full text-white cursor-pointer transition-all duration-300 ease-in-out ${
-                    index < completed
+                    index < completedChallenges
                       ? 'bg-gradient-to-r from-green-500 to-teal-400 scale-110 shadow-lg'
                       : 'bg-gray-400'
                   }`}
-                  onClick={() => handleChallengeClick(index)}
-                  animate={{
-                    scale: index < completed ? [1, 1.3, 1] : 1,
-                    rotate: index < completed ? [0, 360, 0] : 0,
-                  }}
-                  transition={{
-                    duration: 0.8,
-                    type: 'spring',
-                    stiffness: 300,
-                    damping: 30,
-                  }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1, scale: animating && index === completedChallenges ? 1.2 : 1 }}
+                  transition={{ type: 'spring', stiffness: 100, damping: 10 }}
                 >
                   <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                    {index < completed ? (
+                    {index < completedChallenges ? (
                       <FaCheck className="text-2xl animate-pulse" />
                     ) : (
                       <FaTrophy className="text-2xl" />
@@ -83,7 +83,7 @@ const Journey = () => {
             </div>
 
             {/* Stage Description */}
-            {completed === totalChallenges ? (
+            {completedChallenges === totalChallenges ? (
               <motion.div
                 className="text-center mt-8 text-2xl font-semibold text-green-600"
                 animate={{ opacity: 1 }}
@@ -97,7 +97,7 @@ const Journey = () => {
                 animate={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                Keep going! You’ve completed {completed} stages so far. 🏁
+                Keep going! You’ve completed {completedChallenges} stages so far. 🏁
               </motion.div>
             )}
           </section>
